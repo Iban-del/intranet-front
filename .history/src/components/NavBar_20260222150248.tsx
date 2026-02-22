@@ -1,0 +1,12 @@
+
+
+
+const NavBar = () => {
+    return (
+        <aside className="w-96 border-l-2">
+
+        </aside>
+    )
+}
+
+export default NavBar

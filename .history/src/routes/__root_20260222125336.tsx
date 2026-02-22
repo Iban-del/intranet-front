@@ -1,0 +1,32 @@
+import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
+import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import "../index.css";
+import NavBar from '@/components/NavBar';
+import { SidebarTrigger } from '@/components/ui/sidebar';
+
+
+const RootLayout = () => {
+
+
+    return  (
+        <>
+            <NavBar/>
+            <main className='w-full'>
+                
+                <header className=' h-24 border-b-2 flex items-center'>
+                    <SidebarTrigger />
+                    <h2> Intanet </h2>
+                </header>
+                <section>
+                    <Outlet />
+                    <TanStackRouterDevtools />
+                </section>
+                <footer>
+
+                </footer>
+            </main>
+        </>
+    )
+}
+
+export const Route = createRootRoute({ component: RootLayout })
