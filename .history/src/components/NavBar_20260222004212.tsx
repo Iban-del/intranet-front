@@ -1,4 +1,4 @@
-import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarHeader, useSidebar } from "./ui/sidebar"
+import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarHeader } from "./ui/sidebar"
 
 const NavBar = () => {
 
@@ -18,11 +18,6 @@ const NavBar = () => {
                 </SidebarContent>
                 <SidebarFooter />
             </Sidebar>
-            <nav
-                className="w-full"
-            >
-                <button onClick={toggleSidebar}>Toggle Sidebar</button>
-            </nav>
         </section>
     )
 }

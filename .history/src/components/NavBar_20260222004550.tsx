@@ -19,7 +19,7 @@ const NavBar = () => {
                 <SidebarFooter />
             </Sidebar>
             <nav
-                className="w-full"
+                className="w-d"
             >
                 <button onClick={toggleSidebar}>Toggle Sidebar</button>
             </nav>

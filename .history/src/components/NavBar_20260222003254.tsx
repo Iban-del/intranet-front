@@ -1,0 +1,14 @@
+
+const NavBar = () => {
+    return (
+        <nav
+            className="border-b-2 bg-foreground h-full w-screen"
+        >
+            
+        </nav>
+    )
+}
+
+
+
+export default NavBar

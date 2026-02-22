@@ -18,11 +18,6 @@ const NavBar = () => {
                 </SidebarContent>
                 <SidebarFooter />
             </Sidebar>
-            <nav
-                className="w-full"
-            >
-                <button onClick={toggleSidebar}>Toggle Sidebar</button>
-            </nav>
         </section>
     )
 }
