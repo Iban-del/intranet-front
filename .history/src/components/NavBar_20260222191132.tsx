@@ -1,0 +1,28 @@
+
+
+const w:string = "w-72";
+
+const NavBar = () => {
+
+    const appName = import.meta.env.APP_NAME;
+    console.log(import.meta.env.APP_NAME);
+    return (
+        <aside className={"h-screen border-r-2 bg-foreground relative flex flex-col justify-around"}>
+            <div className={"flex-2 flex  justify-center flex-col items-center "+w}>
+                <img src="" alt="Logo" />
+                <h1 className="text-2xl">{appName}</h1>
+                <p className="text-sm">Portail Intranet</p>
+            </div>  
+            <hr/>
+            <nav className={"flex-10 "+w}>
+
+            </nav>
+            <hr/>
+            <div className={"flex-1 "+w}>
+                
+            </div>
+        </aside>
+    )
+}
+
+export default NavBar

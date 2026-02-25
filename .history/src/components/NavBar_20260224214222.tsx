@@ -1,0 +1,126 @@
+import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, useSidebar } from "@/components/ui/sidebar"
+import { ChevronRight, LogOut, User2 } from "lucide-react"
+import { useMemo, type JSX } from "react"
+import { APP_NAME, elementsGroups, LOGO_PATH } from "@/config"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible"
+
+
+const ICON_CLASS = "w-10 mr-4"
+
+
+export interface navbarElementsGroup {
+    title:string,
+    elements:navbarElement[]
+}
+
+export interface navbarElement{
+    title:string,
+    icon:JSX.Element,
+    href?:string,
+    children?:navbarElement[]
+}
+
+export interface navbarElementProps{
+    elements:navbarElement[]
+}
+
+
+const Navbar = () => {
+
+    const { open } = useSidebar();
+
+    const content = useMemo(()=>{
+        
+        const groupList:JSX.Element[] = [];
+        elementsGroups.forEach((el)=>{
+            groupList.push(
+                <SidebarGroup key={"group-"+el.title}>
+                    <SidebarGroupLabel>
+                        {el.title}
+                    </SidebarGroupLabel>
+                    <SidebarGroupContent>
+                        <NavbarElements elements={el.elements}/>
+                    </SidebarGroupContent>
+                </SidebarGroup>
+            )
+        })
+        
+        return groupList;
+    },[]);
+
+    const onLogout = () => {
+        window.location.pathname = "/login"
+    }
+
+    return (
+        <Sidebar collapsible='icon'>
+            <SidebarHeader className="flex flex-row items-center h-10">
+                <img src={LOGO_PATH} className={ICON_CLASS} />
+                {open && 
+                    <h1 className="text-3xl">{APP_NAME}</h1>
+                }
+            </SidebarHeader>
+            <hr/>
+            <SidebarContent className="">
+                {content}
+            </SidebarContent>
+            <hr/>
+            <SidebarFooter>
+                <SidebarMenu>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton onClick={onLogout} >
+                        <LogOut /> Logout
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton>
+                        <User2 /> Username
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                </SidebarMenu>
+            </SidebarFooter>
+        </Sidebar>
+    
+    )
+}
+
+const NavbarElements = ({ elements }: navbarElementProps) => {
+    return (
+        <SidebarMenu>
+        {elements.map((element) =>
+            element.children ? (
+            <Collapsible key={element.title} defaultOpen={false}>
+                <SidebarMenuItem>
+                <CollapsibleTrigger asChild>
+                    <SidebarMenuButton className="justify-between">
+                    <div className="flex items-center gap-2">
+                        {element.icon}
+                        <span>{element.title}</span>
+                    </div>
+                    <ChevronRight className="h-4 w-4 transition-transform data-[state=open]:rotate-90" />
+                    </SidebarMenuButton>
+                </CollapsibleTrigger>
+
+                <CollapsibleContent>
+                    <SidebarMenuSub>
+                    <NavbarElements elements={element.children}/>
+                    </SidebarMenuSub>
+                </CollapsibleContent>
+                </SidebarMenuItem>
+            </Collapsible>
+            ) : (
+            <SidebarMenuItem key={element.title}>
+                <SidebarMenuButton asChild>
+                <a href={element.href}>
+                    {element.icon}
+                    <span>{element.title}</span>
+                </a>
+                </SidebarMenuButton>
+            </SidebarMenuItem>
+            )
+        )}
+        </SidebarMenu>
+    )
+}
+
+export default Navbar

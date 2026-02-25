@@ -1,0 +1,48 @@
+import useAuth from "@/hooks/useAuth";
+import { useForm } from "react-hook-form"
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Field, FieldDescription, FieldGroup, FieldLabel, FieldSet } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+
+const LoginForm = () =>{
+
+    const { Login } = useAuth();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: zodResolver(Login),
+    })
+
+
+    const onSubmit = (data:any) => {
+        console.log(data);
+
+    }
+
+    return (
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <FieldSet className="w-full max-w-xs">
+                <FieldGroup>
+                    <Field>
+                        <FieldLabel htmlFor="username">Username</FieldLabel>
+                        <Input id="username" type="text" placeholder="Max Leiter" />
+                        <FieldDescription>
+                            Choose a unique username for your account.
+                        </FieldDescription>
+                    </Field>
+                    <Field>
+                        <FieldLabel htmlFor="password">Password</FieldLabel>
+                        <FieldDescription>
+                            Must be at least 8 characters long.
+                        </FieldDescription>
+                        <Input id="password" type="password" placeholder="••••••••" />
+                    </Field>
+                </FieldGroup>
+            </FieldSet>
+        </form>
+    )
+}
+
+export default LoginForm;

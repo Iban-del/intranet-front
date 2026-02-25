@@ -1,0 +1,39 @@
+import type { navbarElementsGroup } from "./components/NavBar";
+import { Home, PanelLeft, UserStar } from 'lucide-react';
+
+export const NAV_EXCLUED = [
+    "/login",
+    "/signup"
+]
+
+export const elementsGroups:navbarElementsGroup[] = [
+    {
+        title:"Application",
+        elements:[
+            {
+                title:"Home",
+                icon:<Home/>,
+                href:"/"
+            },
+            {
+                title:"Admin",
+                icon:<UserStar />,
+                href:"/admin",
+                children:[
+                    {
+                        title:"Admin",
+                        icon:<UserStar />,
+                        href:"/admin",
+                    }
+                ]
+            }
+        ]
+    }
+]
+
+
+
+export const APP_NAME = "Nexus";
+export const LOGO_PATH = "/src/assets/logo-network.png";
+
+

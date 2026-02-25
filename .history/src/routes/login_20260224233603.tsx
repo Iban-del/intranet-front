@@ -1,0 +1,17 @@
+
+import LoginForm from '@/components/pages/auth/loginForm'
+import { createFileRoute } from '@tanstack/react-router'
+
+export const Route = createFileRoute('/login')({
+  component: RouteComponent,
+})
+
+function RouteComponent() {
+  return (
+    <div className='w-screen h-screen flex justify-center items-center'>
+      <div className='bg-foreground w-96 h-96'>
+        <LoginForm/>
+      </div>
+    </div>
+  )
+}
