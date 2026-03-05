@@ -1,5 +1,5 @@
 
-import { Box, Component, FolderCode, FolderKanban, Home, PanelLeft, UserStar } from 'lucide-react';
+import { Box, FolderCode, FolderKanban, Home, PanelLeft, UserStar } from 'lucide-react';
 import type { navbarElementsGroup } from './components/NavBar';
 
 
@@ -24,8 +24,8 @@ export const elementsGroups:navbarElementsGroup[] = [
             },
             {
                 title:"Component",
-                icon:<Component/>,
-                href:"/section"
+                icon:<Home/>,
+                href:"/"
             },
             {
                 title:"Projets",

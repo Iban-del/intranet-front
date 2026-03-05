@@ -29,7 +29,7 @@ const RootLayout = () => {
                             </button>
                         </header>
                     }
-                <section className='p-5 w-full h-full'>
+                <section className='p-5'>
                     <Outlet />
                     {/* <TanStackRouterDevtools /> */}
                 </section>

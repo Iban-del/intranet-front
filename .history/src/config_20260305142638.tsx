@@ -25,7 +25,7 @@ export const elementsGroups:navbarElementsGroup[] = [
             {
                 title:"Component",
                 icon:<Component/>,
-                href:"/section"
+                href:"/component"
             },
             {
                 title:"Projets",
